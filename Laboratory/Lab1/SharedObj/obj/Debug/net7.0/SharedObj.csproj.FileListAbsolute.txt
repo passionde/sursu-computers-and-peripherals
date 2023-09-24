@@ -1,0 +1,11 @@
+C:\Develop\university\Computers and peripherals\Laboratory\Lab1\SharedObj\bin\Debug\net7.0\SharedObj.deps.json
+C:\Develop\university\Computers and peripherals\Laboratory\Lab1\SharedObj\bin\Debug\net7.0\SharedObj.dll
+C:\Develop\university\Computers and peripherals\Laboratory\Lab1\SharedObj\bin\Debug\net7.0\SharedObj.pdb
+C:\Develop\university\Computers and peripherals\Laboratory\Lab1\SharedObj\obj\Debug\net7.0\SharedObj.GeneratedMSBuildEditorConfig.editorconfig
+C:\Develop\university\Computers and peripherals\Laboratory\Lab1\SharedObj\obj\Debug\net7.0\SharedObj.AssemblyInfoInputs.cache
+C:\Develop\university\Computers and peripherals\Laboratory\Lab1\SharedObj\obj\Debug\net7.0\SharedObj.AssemblyInfo.cs
+C:\Develop\university\Computers and peripherals\Laboratory\Lab1\SharedObj\obj\Debug\net7.0\SharedObj.csproj.CoreCompileInputs.cache
+C:\Develop\university\Computers and peripherals\Laboratory\Lab1\SharedObj\obj\Debug\net7.0\SharedObj.dll
+C:\Develop\university\Computers and peripherals\Laboratory\Lab1\SharedObj\obj\Debug\net7.0\refint\SharedObj.dll
+C:\Develop\university\Computers and peripherals\Laboratory\Lab1\SharedObj\obj\Debug\net7.0\SharedObj.pdb
+C:\Develop\university\Computers and peripherals\Laboratory\Lab1\SharedObj\obj\Debug\net7.0\ref\SharedObj.dll

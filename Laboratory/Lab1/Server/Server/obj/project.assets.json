@@ -1,0 +1,89 @@
+{
+  "version": 3,
+  "targets": {
+    "net7.0": {
+      "SharedObj/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "compile": {
+          "bin/placeholder/SharedObj.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/SharedObj.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "SharedObj/1.0.0": {
+      "type": "project",
+      "path": "../../SharedObj/SharedObj.csproj",
+      "msbuildProject": "../../SharedObj/SharedObj.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net7.0": [
+      "SharedObj >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\onofr\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Develop\\university\\Computers and peripherals\\Laboratory\\Lab1\\Server\\Server\\Server.csproj",
+      "projectName": "Server",
+      "projectPath": "C:\\Develop\\university\\Computers and peripherals\\Laboratory\\Lab1\\Server\\Server\\Server.csproj",
+      "packagesPath": "C:\\Users\\onofr\\.nuget\\packages\\",
+      "outputPath": "C:\\Develop\\university\\Computers and peripherals\\Laboratory\\Lab1\\Server\\Server\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\onofr\\AppData\\Roaming\\NuGet\\NuGet.Config"
+      ],
+      "originalTargetFrameworks": [
+        "net7.0"
+      ],
+      "sources": {
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "projectReferences": {
+            "C:\\Develop\\university\\Computers and peripherals\\Laboratory\\Lab1\\SharedObj\\SharedObj.csproj": {
+              "projectPath": "C:\\Develop\\university\\Computers and peripherals\\Laboratory\\Lab1\\SharedObj\\SharedObj.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net7.0": {
+        "targetAlias": "net7.0",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}
