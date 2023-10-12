@@ -2,6 +2,6 @@
 
 public struct DataRequest
 {
-    public int Number;
-    public bool Flag;
+    public int Id;
+    public double X;
 }

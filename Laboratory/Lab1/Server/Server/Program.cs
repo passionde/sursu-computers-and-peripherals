@@ -6,24 +6,29 @@
         using NamedPipeServerStream pipeServer = new("channel", PipeDirection.InOut);
         pipeServer.WaitForConnection();
 
-        // Создание сообщения, преобразование в byte
-        DataRequest msg = new()
+        int ID = 1;
+        for (double X = 0.5; X < 100.0; X ++)
         {
-            Number = 1,
-            Flag = false
-        };
+            // Создание сообщения, преобразование в byte
+            DataRequest msg = new()
+            {
+                Id = ID++,
+                X = X
+            };
 
-        byte[] bytes = new byte[Unsafe.SizeOf<DataRequest>()];
-        Unsafe.As<byte, DataRequest>(ref bytes[0]) = msg;
-        pipeServer.Write(bytes, 0, bytes.Length);
+            byte[] bytes = new byte[Unsafe.SizeOf<DataRequest>()];
+            Unsafe.As<byte, DataRequest>(ref bytes[0]) = msg;
+            pipeServer.Write(bytes, 0, bytes.Length);
 
-        Console.WriteLine($"1. Отправлены данные: num = {msg.Number}, flag = {msg.Flag}");
+            Console.WriteLine($"Server(SEND). Send request: Id = {msg.Id}, X = {msg.X}");
 
-        // Получение обновленных данных от клиента
-        byte[] received_bytes = new byte[Unsafe.SizeOf<DataRequest>()];
-        pipeServer.Read(received_bytes, 0, received_bytes.Length);
+            // Получение обновленных данных от клиента
+            byte[] received_bytes = new byte[Unsafe.SizeOf<DataResponse>()];
+            pipeServer.Read(received_bytes, 0, received_bytes.Length);
 
-        DataRequest received_data = Unsafe.As<byte, DataRequest>(ref received_bytes[0]);
-        Console.WriteLine($"4. Получен ответ от клиента: num = {received_data.Number}, flag = {received_data.Flag}");
+            DataResponse received_data = Unsafe.As<byte, DataResponse>(ref received_bytes[0]);
+            Console.WriteLine($"Server(GET): Id = {received_data.Id}, X = {received_data.X}, Result = {received_data.Result}\n");
+            Thread.Sleep(2000);
+        }
     }
 }

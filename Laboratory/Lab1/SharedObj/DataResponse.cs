@@ -2,6 +2,7 @@
 
 public struct DataResponse
 {
-    public int Number;
-    public bool Flag;
+    public int Id;
+    public double X;
+    public double Result;
 }

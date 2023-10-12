@@ -5,21 +5,39 @@
         using NamedPipeClientStream pipeClient = new NamedPipeClientStream(".", "channel", PipeDirection.InOut);
         pipeClient.Connect();
 
-        // Получение данных от сервера
-        byte[] bytes = new byte[Unsafe.SizeOf<DataRequest>()];
-        pipeClient.Read(bytes, 0, bytes.Length);
+        while (pipeClient.IsConnected)
+        {
+            // Получение данных от сервера
+            byte[] bytes = new byte[Unsafe.SizeOf<DataRequest>()];
+            try 
+            {
+                pipeClient.Read(bytes, 0, bytes.Length);
+            }
+            catch (IOException) { break; }
 
-        DataRequest received_data = Unsafe.As<byte, DataRequest>(ref bytes[0]);
-        Console.WriteLine($"2. Получены данные от сервера: num = {received_data.Number}, flag = {received_data.Flag}");
+            DataRequest received_data = Unsafe.As<byte, DataRequest>(ref bytes[0]);
+            Console.WriteLine($"Client(GET). Get request: ID = {received_data.Id}, X = {received_data.X}");
 
-        // Изменение флага
-        received_data.Flag = true;
+            // Изменение флага
+            DataResponse response_data = new()
+            {
+                Id = received_data.Id,
+                X = received_data.X,
+                Result = received_data.X * received_data.X
+            };
 
-        // Отправка обновленных данных обратно на сервер
-        byte[] modified_bytes = new byte[Unsafe.SizeOf<DataRequest>()];
-        Unsafe.As<byte, DataRequest>(ref modified_bytes[0]) = received_data;
-        pipeClient.Write(modified_bytes, 0, modified_bytes.Length);
+            // Отправка обновленных данных обратно на сервер
+            byte[] response_bytes = new byte[Unsafe.SizeOf<DataResponse>()];
+            Unsafe.As<byte, DataResponse>(ref response_bytes[0]) = response_data;
 
-        Console.WriteLine($"3. Отправлены обновленные данные на сервер: num = {received_data.Number}, flag = {received_data.Flag}");
+            try
+            {
+                pipeClient.Write(response_bytes, 0, response_bytes.Length);
+            }
+            catch (IOException) { break; }
+            
+            Console.WriteLine($"Client(SEND). Send response: ID = {response_data.Id}, X = {response_data.X}, Result = {response_data.Result}\n");
+        }
+        Console.WriteLine("Disconnected from the server.");
     }
 }
