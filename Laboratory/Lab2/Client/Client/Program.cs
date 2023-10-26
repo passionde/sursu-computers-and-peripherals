@@ -18,7 +18,6 @@
             DataRequest received_data = Unsafe.As<byte, DataRequest>(ref bytes[0]);
             Console.WriteLine($"Client(GET). Get request: ID = {received_data.Id}, X = {received_data.X}");
 
-            // Изменение флага
             DataResponse response_data = new()
             {
                 Id = received_data.Id,

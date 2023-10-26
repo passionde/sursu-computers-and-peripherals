@@ -1,0 +1,5 @@
+Id: 1, X: 3, Result: 9
+Id: 2, X: 10, Result: 100
+Id: 3, X: 1, Result: 1
+Id: 4, X: 4, Result: 16
+Id: 5, X: 56, Result: 3136
