@@ -13,6 +13,8 @@ if (DeviceHelper.GetGpioExpanderDevices() is [I2cConnectionSettings settings])
 {
     using GpioExpander gpioExpander = new(settings);
 
+    gpioExpander.Calibrate(Angle.FromDegrees(180), TimeSpan.FromMicroseconds(600), TimeSpan.FromMicroseconds(2600));
+
     using ScaledQuadratureEncoder encoder = new ScaledQuadratureEncoder(
         pinA: DeviceHelper.WiringPiToBcm(D0),
         pinB: DeviceHelper.WiringPiToBcm(D1),
@@ -28,6 +30,7 @@ if (DeviceHelper.GetGpioExpanderDevices() is [I2cConnectionSettings settings])
     {
         gpioExpander.WriteAngle(D2, Angle.FromDegrees(e.Value));
     };
+
+    Console.ReadKey();
 }
 
-Console.ReadKey();
