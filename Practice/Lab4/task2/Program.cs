@@ -31,6 +31,7 @@ if (DeviceHelper.GetGpioExpanderDevices() is [I2cConnectionSettings settings])
         gpioExpander.AnalogWrite(D2, (int)e.Value);
         gpioExpander.AnalogWrite(D3, (int)e.Value);
     };
+
+    Console.ReadKey();
 }
 
-Console.ReadKey();
